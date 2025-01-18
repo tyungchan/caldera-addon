@@ -1,0 +1,37 @@
+- tactic: discovery
+  technique_name: Query Registry
+  technique_id: T1012
+  name: 'File: Download Windows Registry .reg'
+  description: Adversaries may interact with the Windows Registry to gather valuable
+    system, configuration, and software information. The Registry holds crucial details
+    about the operating system, software, and security settings, which can be queried
+    using tools like Reg. This information helps adversaries with automated discovery
+    and shapes their subsequent actions, such as deciding whether to fully infect
+    a system or perform specific malicious tasks.
+  executors:
+  - name: psh
+    platform: windows
+    command: "Invoke-WebRequest \"http://198.18.128.193/files/sample.reg\" -OutFile\
+      \ $env:TEMP/sample.reg; \nStart-Sleep -Seconds 3; \nRemove-Item \"$env:TEMP\\\
+      sample.reg\" -Force"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 15
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 9ff2f58c-f992-4db4-a520-4fc9b0f7fb67

@@ -1,0 +1,32 @@
+- tactic: command-and-control
+  technique_name: 'Application Layer Protocol: File Transfer Protocols'
+  technique_id: T1071.002
+  name: 'URL Filtering: Web Access to hacking site'
+  description: Hacking websites can be used for transferring malicious files, payloads,
+    or stolen data using protocols like FTP or SFTP. These protocols are often used
+    to deliver malware or other malicious files to the victim's system.
+  executors:
+  - name: psh
+    platform: windows
+    command: 'Invoke-WebRequest -Uri "https://www.hackthissite.org" -UseBasicParsing '
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 15
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: ed25a127-16fd-4fd0-be04-52d247e276bb

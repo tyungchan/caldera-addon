@@ -1,0 +1,22 @@
+- name: pua-aware adware 2005-search loader runtime detection
+  description: pua-aware adware 2005-search loader runtime detection
+  tactic: persistence
+  technique_id: T1546.001
+  technique_name: 'Event Triggered Execution: 2005-SEARCH'
+  executors:
+  - payloads: []
+    platform: windows
+    name: psh
+    cleanup: []
+    parsers: []
+    command: 'curl -H "Host: 2005-search.com" http://hothtml.github.io/content/plugins/go/go.php'
+    timeout: '60'
+  repeatable: false
+  additional_info: {}
+  privilege: ''
+  singleton: true
+  buckets: []
+  requirements: []
+  access: {}
+  cleanup: []
+  id: 22bdc84e-a6f0-4d51-bef2-9d2f78695c9e

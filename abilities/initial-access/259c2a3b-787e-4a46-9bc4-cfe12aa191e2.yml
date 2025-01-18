@@ -1,0 +1,36 @@
+- tactic: initial-access
+  technique_name: 'Phishing: Spearphishing Link'
+  technique_id: T1566.002
+  name: 'Intrusion: Xml.Phishing.Evernote outbound connection'
+  description: 'Adversaries may exploit SID 1:52027 by delivering spearphishing emails
+    with malicious links to gain access to victim systems. This aligns with T1566.002
+    (Phishing: Spearphishing Link), where attackers rely on social engineering to
+    trick users into clicking links that lead to malware downloads or credential theft.'
+  executors:
+  - name: psh
+    platform: windows
+    command: 'Invoke-WebRequest -Uri "http://198.18.128.193/somepath.php?_truthcolor=value&param=dramafrine"
+      ` -Method Get ` -Headers @{ "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64;
+      x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      } '
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 15
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 259c2a3b-787e-4a46-9bc4-cfe12aa191e2

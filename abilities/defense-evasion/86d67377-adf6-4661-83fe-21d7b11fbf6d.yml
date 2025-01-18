@@ -1,0 +1,32 @@
+- tactic: defense-evasion
+  technique_name: 'Indicator Removal: File Deletion'
+  technique_id: T1070.004
+  name: 'URL Filtering: Web Access to filter avoidance site'
+  description: This technique involves malware deleting files or logs to avoid detection,
+    such as deleting evidence of malicious activities that might have occurred while
+    interacting with gambling, porn, or hacking websites.
+  executors:
+  - name: psh
+    platform: windows
+    command: 'Invoke-WebRequest -Uri "https://proxysite.com" -UseBasicParsing '
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 15
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 86d67377-adf6-4661-83fe-21d7b11fbf6d
