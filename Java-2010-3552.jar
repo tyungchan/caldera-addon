@@ -1,0 +1,21 @@
+<?php 
+// Simulate serving the exploit kit's .jar file 
+$file = 'Java-2010-3552.jar';  // Specify the .jar file name 
+
+// Check if the file exists 
+if (file_exists($file)) { 
+    // Set appropriate headers to serve the .jar file 
+    header('Content-Type: application/java-archive'); 
+    header('Content-Disposition: attachment; filename="' . basename($file) . '"'); 
+    header('Content-Length: ' . filesize($file)); 
+   
+
+    // Read and output the .jar file content 
+    readfile($file); 
+    exit; 
+
+} else { 
+    // If the file does not exist, show an error message 
+    echo "File not found!"; 
+} 
+?> 
