@@ -17,8 +17,8 @@ function Write-Log {
 
 function Generate-Domain {
     # Generate a random domain name and TLD
-    $nameLength = Get-Random -Minimum 7 -Maximum 13
-    $tldLength = Get-Random -Minimum 2 -Maximum 3
+    $nameLength = Get-Random -Minimum 5 -Maximum 11
+    $tldLength = Get-Random -Minimum 2 -Maximum 4
     $domainName = -join ((65..90 + 97..122 + 48..57) | Get-Random -Count $nameLength | ForEach-Object {[char]$_})
     $tld = -join ((65..90 + 97..122) | Get-Random -Count $tldLength | ForEach-Object {[char]$_})
     $domain = "$domainName.$tld"
@@ -28,7 +28,7 @@ function Generate-Domain {
 
 function Query-Domains {
     param (
-        [int]$NumQueries = 100,
+        [int]$NumQueries = 500,
         [double]$SleepTime = 0.01
     )
     for ($i = 0; $i -lt $NumQueries; $i++) {
@@ -39,7 +39,7 @@ function Query-Domains {
         } catch {
             Write-Log -Message "Failed to query domain: $domain" -Level "WARNING"
         }
-        Start-Sleep -Milliseconds ($SleepTime * 100)
+        Start-Sleep -Milliseconds ($SleepTime * 1000)
     }
 }
 
@@ -63,7 +63,7 @@ function Download-File {
 
 # Main execution
 Write-Log -Message "Starting DGA simulation..." -Level "INFO"
-Query-Domains -NumQueries 100 -SleepTime 0.01
+Query-Domains -NumQueries 1000 -SleepTime 0.01
 Download-File
 Write-Log -Message "DGA simulation completed." -Level "INFO"
 
