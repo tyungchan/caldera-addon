@@ -1,0 +1,31 @@
+- tactic: initial-access
+  technique_name: Drive-By Compromise
+  technique_id: T1189
+  name: torrent ps1
+  description: ''
+  executors:
+  - name: psh
+    platform: windows
+    command: .\torrent.ps1
+    code: null
+    language: null
+    build_target: null
+    payloads:
+    - torrent.ps1
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - initial-access
+  additional_info: {}
+  access: {}
+  singleton: false
+  plugin: ''
+  delete_payload: true
+  id: 4ddb8c27-07d4-4ef8-a600-a635623e0a61
