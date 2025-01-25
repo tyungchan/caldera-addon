@@ -2,6 +2,9 @@ name: Cisco C2 Tests
 description: '---'
 atomic_ordering:
 - c24814f6-f43a-4635-80ac-254a2d317e0e
-- ef53f9c5-528f-4e57-abf8-293d6b852f40
+- d9eccb6a-46ea-466f-8ce8-69513b89f866
+- 516fbd0b-1e28-4964-a221-a90828d0b3aa
+- 92ec128f-ae8d-41cb-9e28-0a65960bea22
+- 9c955a373154a7090d4b4396b561f5da
 adversary_id: d5d81a5d-4a5b-43d2-9e1c-025a5f1f036a
 objective: 495a9828-cab1-44dd-a0ca-66e58177d8cc
