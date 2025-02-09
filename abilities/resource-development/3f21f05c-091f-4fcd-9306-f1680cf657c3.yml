@@ -10,7 +10,7 @@
   executors:
   - name: psh
     platform: windows
-    command: Invoke-WebRequest -Uri "https://www.examplemalwaredomain.com" -UseBasicParsing
+    command: Invoke-WebRequest -Uri "https://examplemalwaredomain.com" -UseBasicParsing
     code: null
     language: null
     build_target: null

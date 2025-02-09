@@ -2,7 +2,5 @@ name: Cisco Privileges Escalation Tests
 description: '---'
 atomic_ordering:
 - 0c328b7ec82e0074cbb0745db3a53602
-- 5ff80022-8d85-410b-b868-6c7565b267e5
-- 088b8639-3f37-42cc-9dc8-01aabb645461
 adversary_id: 0fdf6d1a-77cf-45ca-ab75-b1f14fc26e74
 objective: 495a9828-cab1-44dd-a0ca-66e58177d8cc

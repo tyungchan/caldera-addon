@@ -1,0 +1,35 @@
+- tactic: exfiltration
+  technique_name: 'Exfiltration Over Web Service: Exfiltration to Text Storage Sites'
+  technique_id: T1567.003
+  name: 'Cisco: Data Exfiltration to Pastebin'
+  description: Data exfiltration simulations expose potential vulnerabilities in an
+    organization's security posture. One common attack scenario involves leveraging
+    public platforms like Pastebin for exfiltrating sensitive information. In this
+    simulation, attackers mimic real-world tactics by transferring confidential data
+    to Pastebin, exploiting its anonymous and widely accessible nature to evade detection.
+  executors:
+  - name: psh
+    platform: windows
+    command: .\pastebin.ps1
+    code: null
+    language: null
+    build_target: null
+    payloads:
+    - pastebin.ps1
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - exfiltration
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 8d6a86f8-f2d1-4ea8-a7c6-d8135be3ec1e

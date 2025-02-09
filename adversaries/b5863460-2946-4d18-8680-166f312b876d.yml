@@ -1,0 +1,6 @@
+name: Cisco Internal Spear Phishing Test
+description: '---'
+atomic_ordering:
+- 7161125d-e437-44a3-8cc2-e2a3a3cb7d6e
+adversary_id: b5863460-2946-4d18-8680-166f312b876d
+objective: 495a9828-cab1-44dd-a0ca-66e58177d8cc

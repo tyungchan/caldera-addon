@@ -1,0 +1,6 @@
+name: Cisco Data Exfiltration Test
+description: '---'
+atomic_ordering:
+- 8d6a86f8-f2d1-4ea8-a7c6-d8135be3ec1e
+adversary_id: a7daa194-2d87-4031-9ff4-b5aab8b30cd0
+objective: 495a9828-cab1-44dd-a0ca-66e58177d8cc

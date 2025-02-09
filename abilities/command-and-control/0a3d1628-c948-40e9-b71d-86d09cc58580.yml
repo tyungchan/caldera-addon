@@ -1,7 +1,7 @@
 - tactic: command-and-control
   technique_name: 'Dynamic Resolution: Domain Generation Algorithms'
   technique_id: T1568
-  name: Cisco - DGA Simulation
+  name: 'Cisco: DGA Simulation'
   description: The simulation of Domain Generation Algorithm (DGA) activities is not
     just a technical exercise; it's a crucial defense strategy against one of the
     most insidious forms of cyber threats. DGA represents a sophisticated technique

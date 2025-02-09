@@ -1,4 +1,4 @@
-name: Cisco FTD Ignite Training Test Kit
+name: Cisco Secure Firewall Ignite Training Test Kit
 description: Combine all Cisco FTD related adversery test series into single profile
 objective: 495a9828-cab1-44dd-a0ca-66e58177d8cc
 atomic_ordering:

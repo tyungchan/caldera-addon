@@ -1,0 +1,6 @@
+name: Cisco Lateral Movement Test
+description: '---'
+atomic_ordering:
+- 6aaf86c797e33b0ee3d16592be76f46e
+adversary_id: d0f96b71-f542-4b2f-b315-447629b0843a
+objective: 495a9828-cab1-44dd-a0ca-66e58177d8cc
