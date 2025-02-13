@@ -1,0 +1,36 @@
+- tactic: initial-access
+  technique_name: Exploit Public-Facing Application
+  technique_id: T1190
+  name: 'SnortML: Machine Learning-Based SQL Injection Detection'
+  description: The adversary attempts to exploit a web application by injecting SQL-based
+    payloads into HTTP request parameters. Traditional intrusion prevention rules
+    rely on fixed patterns, making them ineffective against novel SQL injection variants.
+    By leveraging SnortML, which utilizes machine learning models trained to detect
+    SQL injection attempts, this attack can be identified and blocked in real-time,
+    even if the specific payload has never been seen before.
+  executors:
+  - name: psh
+    platform: windows
+    command: Invoke-WebRequest -Uri "http://httpforever.com/?foo=%27+OR+%27x%27%3D%27x"
+      -UseBasicParsing
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 15
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - command-and-control
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 673e9cf1-7ee8-4eac-b513-17746986460d

