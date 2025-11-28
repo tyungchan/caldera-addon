@@ -1,0 +1,32 @@
+- tactic: defense-evasion
+  technique_name: 'Masquerading: Masquerade Task or Service'
+  technique_id: T1036.004
+  name: 'Cisco: Potential System Process Impersonation'
+  description: A process with a name that looks like a common process has been executed
+    indicating process impersonation
+  executors:
+  - name: cmd
+    platform: windows
+    command: copy c:\Windows\System32\curl.exe c:\Windows\Temp\scchost.exe & c:\Windows\Temp\scchost.exe
+      https://www.cisco.com
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - defense-evasion
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 14c844ad-f753-431e-bac3-794613b8760d

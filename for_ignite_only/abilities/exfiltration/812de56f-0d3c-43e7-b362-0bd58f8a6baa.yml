@@ -1,0 +1,38 @@
+- tactic: exfiltration
+  technique_name: 'Exfiltration Over Web Service: Exfiltration to Cloud Storage'
+  technique_id: T1567.002
+  name: 'DLP: Upload PII file to cloud storage service'
+  description: DLP (Data Loss Prevention) is essential for defending against adversaries
+    because it helps detect, monitor, and block unauthorized access or transmission
+    of sensitive data. Whether facing external attackers or insider threats, DLP acts
+    as a safeguard by enforcing data handling policies, preventing data exfiltration,
+    and minimizing the impact of compromised accounts. It ensures that critical information
+    like personal data, financial records, or intellectual property doesn't leave
+    the organization unintentionally or maliciously, making it a key layer in any
+    modern cybersecurity defense strategy.
+  executors:
+  - name: psh
+    platform: windows
+    command: .\csa-dlp.ps1
+    code: null
+    language: null
+    build_target: null
+    payloads:
+    - csa-dlp.ps1
+    uploads: []
+    timeout: 10
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - exfiltration
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 812de56f-0d3c-43e7-b362-0bd58f8a6baa

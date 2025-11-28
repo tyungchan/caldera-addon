@@ -1,0 +1,31 @@
+- tactic: exfiltration
+  technique_name: 'Exfiltration Over Web Service: Exfiltration to Cloud Storage'
+  technique_id: T1567.002
+  name: 'URL Filtering: Web access to Peer File Transfer site'
+  description: Adversaries can abuse peer file transfer websites to stealthily exfiltrate
+    data or deliver malicious payloads without relying on traditional network channels.
+  executors:
+  - name: psh
+    platform: windows
+    command: Invoke-WebRequest -Uri "https://thepiratesproxy.org" -UseBasicParsing
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 10
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - exfiltration
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: false
+  id: e9a4ca17-6efe-4dbd-aa4a-0272e63e838e

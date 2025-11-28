@@ -1,0 +1,33 @@
+- tactic: command-and-control
+  technique_name: 'Web Service: One-Way Communication'
+  technique_id: T1102.003
+  name: 'Cisco: Suspicious Request to Telegram'
+  description: A suspicious attempt to communicate with the Telegram chat service
+    or the Telegraph blog service using a tool other than the Telegram desktop application
+    or a web browser. Adversaries have been known to use Telegram in this manner for
+    C2 communications. Supports Windows and macOS.
+  executors:
+  - name: psh
+    platform: windows
+    command: curl https://t.me/s
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - command-and-control
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 2bff9641-e1e2-4498-9922-dcde29d79260

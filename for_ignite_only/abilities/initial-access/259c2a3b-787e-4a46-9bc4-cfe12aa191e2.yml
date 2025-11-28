@@ -9,7 +9,7 @@
   executors:
   - name: psh
     platform: windows
-    command: 'Invoke-WebRequest -Uri "http://198.18.133.49/somepath.php?_truthcolor=value&param=dramafrine"
+    command: 'Invoke-WebRequest -Uri "http://#{caldera.host}/somepath.php?_truthcolor=value&param=dramafrine"
       ` -Method Get ` -Headers @{ "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64;
       x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
       } '

@@ -12,7 +12,7 @@
   - name: psh
     platform: windows
     command: '$plinkProcess = Start-Process -FilePath C:\Users\Public\plink.exe -ArgumentList
-      "-ssh 198.18.133.49 -l sysadmin -pw C1sco12345" -NoNewWindow -PassThru; Start-Sleep
+      "-ssh #{caldera.host} -l sysadmin -pw C1sco12345" -NoNewWindow -PassThru; Start-Sleep
       -Seconds 5; $plinkProcess.Kill() '
     code: null
     language: null

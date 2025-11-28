@@ -1,0 +1,37 @@
+- tactic: command-and-control
+  technique_name: 'Dynamic Resolution: Domain Generation Algorithms'
+  technique_id: T1568
+  name: 'Cisco: DGA Simulation'
+  description: The simulation of Domain Generation Algorithm (DGA) activities is not
+    just a technical exercise; it's a crucial defense strategy against one of the
+    most insidious forms of cyber threats. DGA represents a sophisticated technique
+    employed by adversaries to automatically generate large number of domain names.
+    These domains serve as ever-shifting rendezvous points with command-and-control
+    (C2) servers, making the detection and blocking efforts of security systems a
+    formidable challenge.
+  executors:
+  - name: psh
+    platform: windows
+    command: .\dga.ps1
+    code: null
+    language: null
+    build_target: null
+    payloads:
+    - dga.ps1
+    uploads: []
+    timeout: 300
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - command-and-control
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: false
+  id: 0a3d1628-c948-40e9-b71d-86d09cc58580

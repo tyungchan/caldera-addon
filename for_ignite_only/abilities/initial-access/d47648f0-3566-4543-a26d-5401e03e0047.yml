@@ -10,7 +10,7 @@
   executors:
   - name: psh
     platform: windows
-    command: Invoke-WebRequest -Uri "http://ihaveabadreputation.com" -UseBasicParsing
+    command: Invoke-WebRequest -Uri "http://www.internetbadguys.com" -UseBasicParsing
     code: null
     language: null
     build_target: null

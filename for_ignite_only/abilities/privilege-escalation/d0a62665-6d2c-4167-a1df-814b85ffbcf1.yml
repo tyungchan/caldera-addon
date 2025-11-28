@@ -1,0 +1,14 @@
+- requirements: []
+  name: Show whoami privilege status
+  tactic: privilege-escalation
+  technique_id: T1484.002
+  technique_name: 'Abuse Elevation Control Mechanism: Bypass User Account Control'
+  executors:
+  - cleanup: []
+    timeout: 60
+    platform: windows
+    name: psh
+    payloads: []
+    parsers: []
+    command: whoami /priv
+  id: d0a62665-6d2c-4167-a1df-814b85ffbcf1

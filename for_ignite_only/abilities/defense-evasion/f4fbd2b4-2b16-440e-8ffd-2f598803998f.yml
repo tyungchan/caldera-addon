@@ -1,0 +1,38 @@
+- tactic: defense-evasion
+  technique_name: Obfuscated Files or Information
+  technique_id: T1027
+  name: 'File: CSA - Compressed ZIP file'
+  description: Adversaries often deliver malicious ZIP archives to compress and disguise
+    payloads, bypassing email filters or antivirus scanning. These ZIP files may contain
+    scripts, executables, or document-based exploits that activate upon extraction
+    or user interaction. This method enables efficient delivery of malware while evading
+    basic security controls.
+  executors:
+  - name: psh
+    platform: windows
+    command: "$response = Invoke-WebRequest #{ignite.url}/files/sample.zip -ErrorAction\
+      \ Stop;\n\nif ($response.Headers[\"Content-Type\"] -like \"text/html*\") {\n\
+      \    throw \"Blocked by proxy \u2014 received HTML instead of native error.\"\
+      \n};\n$response.Content | Set-Content \"$env:TEMP\\sample.zip\";\nStart-Sleep\
+      \ -Seconds 3;\nRemove-Item \"$env:TEMP\\sample.zip\" -Force"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - defense-evasion
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: f4fbd2b4-2b16-440e-8ffd-2f598803998f

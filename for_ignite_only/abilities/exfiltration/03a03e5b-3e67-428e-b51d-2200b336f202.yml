@@ -1,0 +1,40 @@
+- tactic: exfiltration
+  technique_name: 'Exfiltration Over Web Service: Exfiltration to Text Storage Sites'
+  technique_id: T1567.003
+  name: 'Application: Pastebin (text storage site)'
+  description: Adversaries often use public text storage services like Pastebin.com
+    to host or share malicious content, such as command-and-control (C2) instructions,
+    stolen data, or encoded payloads. These services are appealing because they allow
+    anonymous posting, are widely accessible, and often evade security detection due
+    to their legitimate use by developers and researchers. Attackers may program malware
+    to fetch instructions or updates from these paste sites, making it harder to trace
+    and block communications.
+  executors:
+  - name: psh
+    platform: windows
+    command: "$response = Invoke-WebRequest https://pastebin.com/raw/DFVtNfjy -ErrorAction\
+      \ Stop;\n\nif ($response.Headers[\"Content-Type\"] -like \"text/html*\") {\n\
+      \    throw \"Blocked by proxy \u2014 received HTML instead of native error.\"\
+      \n};\n$response.Content | Set-Content \"$env:TEMP\\pastebin.txt\";\nStart-Sleep\
+      \ -Seconds 3;\nRemove-Item \"$env:TEMP\\pastebin.txt\" -Force"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 10
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - exfiltration
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 03a03e5b-3e67-428e-b51d-2200b336f202

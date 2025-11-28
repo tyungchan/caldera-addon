@@ -1,12 +1,12 @@
 - tactic: lateral-movement
   technique_name: 'Remote Services: VNC'
   technique_id: T1021.005
-  name: 'Application: RFB (VNC Protocol)'
+  name: 'Application: CSA - VNC RFB'
   description: Adversaries may abuse Valid Accounts to remotely control machines using
     Virtual Network Computing (VNC), a platform-independent system that allows screen,
     mouse, and keyboard control over the network. Unlike Remote Desktop Protocol (RDP),
     VNC focuses on screen sharing rather than resource sharing. VNC typically uses
-    system authentication but can be configured to use its own credentials. Adversaries
+    system authentication, but can be configured to use its own credentials. Adversaries
     can use VNC for malicious activities such as opening files, downloading data,
     and executing commands, while also leveraging it for monitoring systems and gathering
     information for lateral movement within a network. Some VNC implementations are
@@ -14,15 +14,19 @@
   executors:
   - name: psh
     platform: windows
-    command: "$curlProcess = Start-Process \u2013FilePath curl.exe -ArgumentList \"\
-      telnet://#{caldera.host}:5901\" -NoNewWindow -PassThru; Start-Sleep -Seconds\
-      \ 3; $curlProcess.Kill() "
+    command: "$client = New-Object System.Net.Sockets.TcpClient;\n$client.Connect(\"\
+      #{ignite.host}\", 5901);\n\n$stream = $client.GetStream();\n$buffer = New-Object\
+      \ byte[] 1024;\n$readBytes = $stream.Read($buffer, 0, $buffer.Length);\n\nif\
+      \ ($readBytes -gt 0) {\n    $response = [System.Text.Encoding]::ASCII.GetString($buffer,\
+      \ 0, $readBytes);\n    if ($response -match \"RFB\\s*0*3\\.0*([0-9]+)\") {\n\
+      \        Start-Sleep -Seconds 5;\n        $stream.Close();\n        $client.Close();\n\
+      \    };\n};\n"
     code: null
     language: null
     build_target: null
     payloads: []
     uploads: []
-    timeout: 15
+    timeout: 10
     parsers: []
     cleanup: []
     variations: []
@@ -30,11 +34,11 @@
   requirements: []
   privilege: ''
   repeatable: false
-  buckets: []
-  additional_info:
-    cleanup: '[]'
+  buckets:
+  - lateral-movement
+  additional_info: {}
   access: {}
   singleton: true
   plugin: ''
-  delete_payload: false
-  id: 35a5f69d-a1de-4ecb-83cb-5ead5b3b6a9a
+  delete_payload: true
+  id: 03380b0d-4b97-4142-817f-2817b3307963

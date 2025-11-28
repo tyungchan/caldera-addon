@@ -1,0 +1,38 @@
+- tactic: defense-evasion
+  technique_name: Template Injection
+  technique_id: T1221
+  name: 'File: CSA - MS PowerPoint PPTX file'
+  description: Adversaries may use malicious PowerPoint files to deliver malware through
+    embedded macros or exploits. These files often rely on user interaction, such
+    as enabling content or clicking objects, to trigger the execution of payloads.
+    Once activated, the embedded code may download additional malware or execute commands,
+    serving as an initial access vector or payload delivery method.
+  executors:
+  - name: psh
+    platform: windows
+    command: "$response = Invoke-WebRequest #{ignite.url}/files/sample.pptx -ErrorAction\
+      \ Stop;\n\nif ($response.Headers[\"Content-Type\"] -like \"text/html*\") {\n\
+      \    throw \"Blocked by proxy \u2014 received HTML instead of native error.\"\
+      \n};\n$response.Content | Set-Content \"$env:TEMP\\sample.pptx\";\nStart-Sleep\
+      \ -Seconds 3;\nRemove-Item \"$env:TEMP\\sample.pptx\" -Force"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 10
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - defense-evasion
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 8a834d55-fdc2-40d9-9be3-df57c29b7595

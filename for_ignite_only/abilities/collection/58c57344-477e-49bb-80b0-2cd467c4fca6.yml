@@ -11,7 +11,7 @@
   executors:
   - name: psh
     platform: windows
-    command: "Invoke-WebRequest \"http://198.18.133.49/files/sample.pst\" -OutFile\
+    command: "Invoke-WebRequest \"http://#{caldera.host}/files/sample.pst\" -OutFile\
       \ $env:TEMP/sample.pst; \nStart-Sleep -Seconds 3; \nRemove-Item \"$env:TEMP\\\
       sample.pst\" -Force"
     code: null

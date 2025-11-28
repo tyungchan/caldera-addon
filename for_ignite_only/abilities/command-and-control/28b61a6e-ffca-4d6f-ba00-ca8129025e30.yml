@@ -1,0 +1,38 @@
+- tactic: command-and-control
+  technique_name: 'Proxy: Multi-hop Proxy'
+  technique_id: T1090.003
+  name: 'Cisco: Connection to TOR IP Address'
+  description: 'Traffic to The Onion Router (TOR) IP address was detected. TOR has
+    legitimate privacy preserving features when used on a personal device, but adversaries
+    are known to leverage it for Command and Control traffic and defense evasion.
+    Even if utilized by a legitimate user, it can circumvent some security controls.
+
+    '
+  executors:
+  - name: psh
+    platform: windows
+    command: curl.exe -s https://check.torproject.org/exit-addresses | Select-Object
+      -First 10 | Where-Object {$_ -match 'ExitAddress'} | ForEach-Object {$_ -replace
+      '^ExitAddress\s+',''} | ForEach-Object {$_ -replace '\s+.*$',''} | foreach-object
+      {curl.exe $_}
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 500
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - command-and-control
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: true
+  id: 28b61a6e-ffca-4d6f-ba00-ca8129025e30

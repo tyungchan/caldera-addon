@@ -1,0 +1,32 @@
+- tactic: command-and-control
+  technique_name: 'Web Service: Bidirectional Communication'
+  technique_id: T1102.002
+  name: 'URL Filtering: Web access to Games site'
+  description: Adversaries can exploit gaming websites or platforms to disguise malicious
+    traffic, deliver malware through trojanized games, or use in-game communication
+    channels for covert command and control.
+  executors:
+  - name: psh
+    platform: windows
+    command: Invoke-WebRequest -Uri "https://www.crazygames.com" -UseBasicParsing
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 10
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - command-and-control
+  additional_info: {}
+  access: {}
+  singleton: true
+  plugin: ''
+  delete_payload: false
+  id: d202fa43-1511-4d05-ab6c-ed33b87964c3

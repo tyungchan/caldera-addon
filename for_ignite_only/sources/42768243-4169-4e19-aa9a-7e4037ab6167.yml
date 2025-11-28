@@ -1,0 +1,19 @@
+id: 42768243-4169-4e19-aa9a-7e4037ab6167
+name: Cisco-Ignite-Source
+facts:
+- unique: caldera.host198.18.128.193
+  trait: caldera.host
+  name: caldera.host
+  value: 198.18.128.193
+  created: '2025-11-28T02:11:10Z'
+  score: 1
+  source: 42768243-4169-4e19-aa9a-7e4037ab6167
+  origin_type: IMPORTED
+  links: []
+  relationships: []
+  limit_count: -1
+  collected_by: []
+  technique_id: null
+rules: []
+relationships: []
+plugin: ''

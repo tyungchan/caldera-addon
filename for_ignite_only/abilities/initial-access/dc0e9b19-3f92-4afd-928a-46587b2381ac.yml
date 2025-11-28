@@ -1,0 +1,15 @@
+- requirements: []
+  name: torrent ps1
+  description: torrent ps1
+  technique_id: T1189
+  tactic: initial-access
+  technique_name: 'Drive-by Compromise: Torrent File Sharing'
+  executors:
+  - cleanup: []
+    timeout: 60
+    platform: windows
+    name: psh
+    payloads: []
+    parsers: []
+    command: .\torrent.ps1
+  id: dc0e9b19-3f92-4afd-928a-46587b2381ac

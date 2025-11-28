@@ -8,7 +8,7 @@
   executors:
   - name: psh
     platform: windows
-    command: 'Invoke-WebRequest -Uri "https://proxysite.com" -UseBasicParsing '
+    command: 'Invoke-WebRequest -Uri "https://proxywow.com" -UseBasicParsing '
     code: null
     language: null
     build_target: null
